@@ -1,23 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import NotesPage from "./pages/NotesPage";
+import { useEffect } from "react";
+import { v4 as uuidv4 } from "uuid";
 function App() {
+  useEffect(() => {
+    if (!localStorage.getItem("uid")) localStorage.setItem("uid", uuidv4());
+
+    return () => {};
+  }, []);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NotesPage></NotesPage>
     </div>
   );
 }
