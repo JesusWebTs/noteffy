@@ -16,7 +16,7 @@ import {
   CreatedAtStyled,
 } from "./styles";
 
-function Note({ title, content, uuid, done, time, onDelete, onUpdate }) {
+function Note({ title, content, uuid, done, time, onDelete, limitTime,onUpdate }) {
   const { closeModal, openModal, showModal } = useModal();
 
   return (
@@ -39,7 +39,11 @@ function Note({ title, content, uuid, done, time, onDelete, onUpdate }) {
             <UpdateIcon></UpdateIcon>
           </ControlButtonStyled>
         </NoteControlsStyled>
-        <CreatedAtStyled>{new Date(time).toLocaleDateString()}</CreatedAtStyled>
+        <CreatedAtStyled>
+          Creada el: {new Date(time).toLocaleDateString()}
+          <br></br>
+          Terminar el: {new Date(limitTime).toLocaleDateString()}
+        </CreatedAtStyled>
       </NoteContainerStyled>
       <Modal closeModal={closeModal} show={showModal}>
         <CreateNoteForm
@@ -55,4 +59,3 @@ function Note({ title, content, uuid, done, time, onDelete, onUpdate }) {
 }
 
 export default Note;
-

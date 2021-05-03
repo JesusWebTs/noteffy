@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import colors from "../../styles/colors";
 
 export const ModalContainerStyled = styled.div`
   z-index: 30;
@@ -37,7 +38,7 @@ export const CloseButtonStyled = styled.button`
   top: 0;
   position: absolute;
   margin: 25px;
-  background-color: lightblue;
+  background-color: ${colors.color_1};
   border-radius: 50%;
   overflow: hidden;
   width: 50px;
@@ -49,14 +50,14 @@ export const CloseButtonStyled = styled.button`
     color: white;
     transition: color 0.3s ease;
     &:hover {
-      color: black;
+      color: ${colors.color_2};
     }
   }
 `;
 
 export const Modalcontent = styled.div`
-  background-color: lightBlue;
-  border: 1px solid white;
+  background-color: ${colors.color_1};
+  border: 4px dashed white;
   border-radius: 10px;
   width: 600px;
 

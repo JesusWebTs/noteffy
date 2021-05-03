@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import colors from "../../styles/colors";
+
 export const NoteContainerStyled = styled.div`
   width: 400px;
   border: 1px solid black;
@@ -8,7 +10,8 @@ export const NoteContainerStyled = styled.div`
   box-shadow: 0 0 8px 0 black;
   text-align: center;
   position: relative;
-  background-color: lightblue;
+  background-color: ${colors.color_1};
+  color: white;
   cursor: pointer;
   animation-name: NotesAnimates;
   animation-duration: 0.5s;
@@ -40,7 +43,7 @@ export const NoteCheckBoxStyled = styled.div`
   height: 30px;
   overflow: hidden;
   transform: translateX(50%) translateY(-50%);
-  border: 8px solid lightblue;
+  border: 8px solid ${colors.color_2};
   box-shadow: 0 0 8px 0 black;
   display: flex;
   justify-content: center;
@@ -76,6 +79,7 @@ export const NoteControlsStyled = styled.div`
   width: min-content;
   height: 100%;
   background: #00000099;
+  padding: 0 5px;
   opacity: 0;
   transition: opacity 0.5s ease;
   display: flex;
@@ -93,10 +97,15 @@ export const ControlButtonStyled = styled.button`
   background-color: #00000055;
   color: white;
   cursor: pointer;
+  transition: background-color 0.5s ease;
+  &:hover {
+    background-color: ${colors.color_1};
+  }
 `;
 
 export const CreatedAtStyled = styled.small`
   position: absolute;
   bottom: 5px;
   right: 5px;
+  text-align: right;
 `;

@@ -34,34 +34,37 @@ const useNotes = () => {
     const uuid = uuidv4();
     const time = Date.now();
     const newNote = { ...note, uuid, time, uid, done: false };
+    setNotes((prevNotes) => [...prevNotes, newNote]);
     return ApiConnect.post(newNote)
       .then(() => {
-        return setNotes((prevNotes) => [...prevNotes, newNote]);
+        return true;
       })
       .catch((err) => {
         console.log(err);
       });
   };
   const updateNote = (uuid, note) => {
+    const _note = notes.map((_note) =>
+      _note.uuid === uuid ? { ..._note, ...note } : _note
+    );
+    setNotes(_note);
     return ApiConnect.update(uuid, note)
       .then(() => {
-        const _note = notes.map((_note) =>
-          _note.uuid === uuid ? { ..._note, ...note } : _note
-        );
-        setNotes(_note);
+        return true;
       })
       .catch((err) => console.log(err));
   };
   const deleteNote = (uuid) => {
+    let _notes = notes.map((note) => {
+      if (note.uuid !== uuid) return note;
+    });
+    _notes = _notes.filter((note) => {
+      if (note) return note;
+    });
+    setNotes(_notes);
     return ApiConnect.delete(uuid)
       .then(() => {
-        let _notes = notes.map((note) => {
-          if (note.uuid !== uuid) return note;
-        });
-        _notes = _notes.filter((note) => {
-          if (note) return note;
-        });
-        setNotes(_notes);
+        return true;
       })
       .catch((err) => {
         console.log(err);
