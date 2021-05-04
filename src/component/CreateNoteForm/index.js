@@ -56,9 +56,8 @@ function CreateNoteForm({
     validTitle();
     validLimitTime();
     return () => {};
-  }, []);
+  }, [_title, _content, _limitTime]);
   useEffect(() => {
-    console.log(_limitTime);
     return () => {};
   }, [_limitTime]);
 
