@@ -10,6 +10,7 @@ import {
   FieldError,
 } from "./styles";
 import { useValidateField } from "./hooks/useValidateField";
+import { inputTimeFormatter } from "../../helpers";
 
 function CreateNoteForm({
   title = "",
@@ -27,7 +28,7 @@ function CreateNoteForm({
 
   const [errorTitle, validTitle] = useValidateField({
     field: "Título",
-    regExp: /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u,
+    regExp: /^[a-zA-Z0-9àáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u,
     minSize: 5,
     maxSize: 30,
     example: "Título de ejemplo.",
@@ -46,7 +47,7 @@ function CreateNoteForm({
     regExp: null,
     minSize: null,
     maxSize: null,
-    example: "Compañia Ejemplo",
+    example: null,
     text: _limitTime,
   });
 
@@ -56,6 +57,10 @@ function CreateNoteForm({
     validLimitTime();
     return () => {};
   }, []);
+  useEffect(() => {
+    console.log(_limitTime);
+    return () => {};
+  }, [_limitTime]);
 
   const setNote = (e) => {
     e.preventDefault();
@@ -66,13 +71,13 @@ function CreateNoteForm({
       return updateNote(uuid, {
         title: _title,
         content: _content,
-        limitTime: _limitTime,
+        limitTime: inputTimeFormatter(_limitTime),
       });
     } else {
       return createNote({
         title: _title,
         content: _content,
-        limitTime: _limitTime,
+        limitTime: inputTimeFormatter(_limitTime),
       });
     }
   };
@@ -125,7 +130,7 @@ function CreateNoteForm({
             <FieldError>{errorComment}</FieldError>
           ) : null}
         </InputContainer>
-        <ButtonStyled onClick={setNote}>Creat Nota</ButtonStyled>
+        <ButtonStyled onClick={setNote}>Crear Nota</ButtonStyled>
       </FormStyled>
     </ContainerStyled>
   );

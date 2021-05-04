@@ -3,7 +3,7 @@ import React from "react";
 import Note from "../../component/Note";
 import Modal from "../../component/Modal";
 import CreateNoteForm from "../../component/CreateNoteForm";
-import Title from "../../component/Title";
+
 //Hooks
 import useNotes from "../../hooks/useNotes";
 import useModal from "../../hooks/useModal";

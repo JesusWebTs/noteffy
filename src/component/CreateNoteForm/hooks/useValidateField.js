@@ -9,20 +9,21 @@ export const useValidateField = ({
   text,
 }) => {
   const [error, setError] = useState("");
+  console.log(text)
   const validField = () => {
     if (!text) {
-      return setError(`El campo ${field} no puede estar vacio.`);
+      return setError(`El campo "${field}" no puede estar vacio.`);
     } else if (regExp && !regExp.test(text)) {
       return setError(
-        `El campo ${field} no cumple con las validaciones necesarias. Ejemplo: ${example}.`
+        `El campo "${field}" no cumple con las validaciones necesarias. Ejemplo: ${example}.`
       );
-    } else if (minSize && text.length <= minSize) {
+    } else if (minSize && text.length < minSize) {
       return setError(
-        `El campo ${field} debe tener al menos ${minSize} caracteres.`
+        `El campo "${field}" debe tener al menos ${minSize} caracteres.`
       );
-    } else if (maxSize && text.length >= maxSize) {
+    } else if (maxSize && text.length > maxSize) {
       return setError(
-        `El campo ${field} debe tener un maximo de ${maxSize} caracteres.`
+        `El campo "${field}" debe tener un maximo de ${maxSize} caracteres.`
       );
     } else {
       return setError("");

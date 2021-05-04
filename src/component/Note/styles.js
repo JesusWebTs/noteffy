@@ -109,3 +109,9 @@ export const CreatedAtStyled = styled.small`
   right: 5px;
   text-align: right;
 `;
+
+export const TimeVar = styled.small`
+
+
+
+`;
