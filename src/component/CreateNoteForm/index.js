@@ -51,15 +51,6 @@ function CreateNoteForm({
     text: _limitTime,
   });
 
-  useEffect(() => {
-    validComment();
-    validTitle();
-    validLimitTime();
-    return () => {};
-  }, [_title, _content, _limitTime]);
-  useEffect(() => {
-    return () => {};
-  }, [_limitTime]);
 
   const setNote = (e) => {
     e.preventDefault();

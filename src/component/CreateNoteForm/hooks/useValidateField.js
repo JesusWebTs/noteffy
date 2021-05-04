@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const useValidateField = ({
   field,
@@ -9,7 +9,12 @@ export const useValidateField = ({
   text,
 }) => {
   const [error, setError] = useState("");
-  console.log(text)
+
+  useEffect(() => {
+    validField();
+    return () => {};
+  }, [text]);
+
   const validField = () => {
     if (!text) {
       return setError(`El campo "${field}" no puede estar vacio.`);
