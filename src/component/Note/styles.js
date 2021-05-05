@@ -16,6 +16,7 @@ export const NoteContainerStyled = styled.div`
   animation-name: NotesAnimates;
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
+  padding-left: 40px;
 
   &:hover {
     div {
@@ -110,8 +111,37 @@ export const CreatedAtStyled = styled.small`
   text-align: right;
 `;
 
-export const TimeVar = styled.small`
-
-
-
+export const TimeBarStyled = styled.div`
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 40px;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  background: rgb(231, 43, 43);
+  background: linear-gradient(
+    0deg,
+    rgba(231, 43, 43, 1) 0%,
+    rgba(221, 192, 43, 1) 33%,
+    rgba(211, 231, 43, 1) 66%,
+    rgba(69, 223, 71, 1) 100%
+  );
+  clip-path: polygon(
+    0 ${({ timeLeft = 0 }) => `${100 - timeLeft}%`},
+    100% ${({ timeLeft = 0 }) => `${100 - timeLeft}%`},
+    100% 100%,
+    0% 100%
+  );
+  overflow: hidden;
+  &:before {
+    content: "${({ leftDays }) => leftDays}D";
+    position: absolute;
+    top: ${({ timeLeft = 0 }) => `${100 - timeLeft}%`};
+    left: 0;
+    right: 0;
+    font-size: bold;
+    color: white;
+    background-color: #00000077;
+  }
 `;

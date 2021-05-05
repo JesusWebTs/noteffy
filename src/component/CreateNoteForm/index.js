@@ -51,7 +51,6 @@ function CreateNoteForm({
     text: _limitTime,
   });
 
-
   const setNote = (e) => {
     e.preventDefault();
     setSubmit(true);
