@@ -128,7 +128,9 @@ export const TimeBarStyled = styled.div`
     rgba(69, 223, 71, 1) 100%
   );
   clip-path: polygon(
-    0 ${({ timeLeft = 0 }) => `${100 - timeLeft}%`},
+    0 ${({ timeLeft = 0 }) => {
+      return `${100 - timeLeft}%`
+    }},
     100% ${({ timeLeft = 0 }) => `${100 - timeLeft}%`},
     100% 100%,
     0% 100%

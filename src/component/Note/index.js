@@ -40,13 +40,13 @@ function Note({
     TInit: Date.now(),
   });
 
-  const timeLeft = (leftDays * 100) / maxDays;
+  const timeLeft = (leftDays * 100) / maxDays;  
 
   return (
     <>
       <NoteContainerStyled>
         <TimeBarStyled
-          timeLeft={timeLeft > 0 ? timeLeft : 0}
+          timeLeft={leftDays > 0 ? timeLeft : 0}
           leftDays={leftDays > 0 ? leftDays : 0}
         />
         <NoteTitleStyled>{title}</NoteTitleStyled>
